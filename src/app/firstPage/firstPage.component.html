@@ -1,0 +1,22 @@
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand">Messages:</a>
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <div *ngFor="let showMessage of showMessages">
+                <li class="nav-item"><a class="nav-link" routerLink=""
+                        (click)='showDetails(showMessage.id)'>{{ showMessage.title  }}</a></li>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <input class="col col-6" [formControl]="controlInput" (keyup)="onChangeValue()" />
+    <select class="col col-6" [formControl]="controlSelect" (change)="onChangeValue()">
+        <option *ngFor="let option of label.options" [value]="option.key"> {{ option.value  }} </option>
+    </select>
+</div>
+<div>
+    <input class="favorite styled" type="button" value="'Add message'" [formControl]="controlButton"
+        (click)='addDataMessage($event)'>
+</div>

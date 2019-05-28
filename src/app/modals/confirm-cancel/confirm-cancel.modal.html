@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 *ngIf="modalHeader"
+        class="modal-title">{{confirmTitle}}</h4>
+  </div>
+  <div class="modal-body">
+    {{confirmText}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success confirm-btn"
+            (click)="confirm(sourceComponent)">{{ buttonTitles.confirm }}</button>
+    <button class="btn btn-danger confirm-btn"
+            (click)="closeModal()">{{ buttonTitles.close }}</button>
+  </div>
+</div>
