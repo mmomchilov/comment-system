@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
+import { CommentService } from './../commentServices/commentService/comment.service';
+
 @Component({
     selector: 'app-page-first',
     templateUrl: './firstPage.component.html',
-    styleUrls: ['./firstPage.component.scss']
+    styleUrls: ['./firstPage.component.scss'],
+    providers: [CommentService]
 })
 export class FirstPageComponent implements OnInit {
     private dataMessages: any[] = [];
@@ -13,7 +16,7 @@ export class FirstPageComponent implements OnInit {
     controlInput: FormControl;
     controlSelect: FormControl;
     controlButton: FormControl;
-    constructor(private router: Router) {
+    constructor(private router: Router, private commentService: CommentService, ) {
         this.controlInput = new FormControl({ value: '' });
         this.controlInput.reset();
         this.controlSelect = new FormControl({ value: undefined });
@@ -51,13 +54,14 @@ export class FirstPageComponent implements OnInit {
         this.router.navigate(['/secondPage']);
     }
     addDataMessage(event) {
-        const curId = Guid.create();
-        const messageData = {
-            'id': curId,
-            'title': this.controlInput.value,
-            'dateAdded': new Date(),
-            'type': this.controlSelect.value
-        };
+        const messageData = this.commentService.addDataMessage(this.controlInput.value, this.controlSelect.value);
+        // const curId = Guid.create();
+        // const messageData = {
+        //     'id': curId,
+        //     'title': this.controlInput.value,
+        //     'dateAdded': new Date(),
+        //     'type': this.controlSelect.value
+        // };
         this.dataMessages.push(messageData);
         this.sortByDateAdded(this.dataMessages);
         this.buildShowMessages();
