@@ -12,7 +12,7 @@ import { CommentService } from './../commentServices/commentService/comment.serv
 })
 export class FirstPageComponent implements OnInit {
     private dataMessages: any[] = [];
-    showMessages = [];
+    showMessages: any[] = [];
     controlInput: FormControl;
     controlSelect: FormControl;
     controlButton: FormControl;
@@ -54,29 +54,22 @@ export class FirstPageComponent implements OnInit {
         this.router.navigate(['/secondPage']);
     }
     addDataMessage(event) {
-        const messageData = this.commentService.addDataMessage(this.controlInput.value, this.controlSelect.value);
-        // const curId = Guid.create();
-        // const messageData = {
-        //     'id': curId,
-        //     'title': this.controlInput.value,
-        //     'dateAdded': new Date(),
-        //     'type': this.controlSelect.value
-        // };
-        this.dataMessages.push(messageData);
+        const commentData = this.commentService.createComment(this.controlInput.value, this.controlSelect.value);
+        this.dataMessages.push(commentData);
         this.sortByDateAdded(this.dataMessages);
         this.buildShowMessages();
         this.controlInput.reset();
         this.controlSelect.reset();
         this.controlButton.disable();
     }
-    sortByDateAdded(list) {
+    private sortByDateAdded(list) {
         if (list !== []) {
             list.sort((b, a) => new Date(a['dateAdded']).getTime() - new Date(b['dateAdded']).getTime());
         }
         return list;
     }
 
-    buildShowMessages() {
+    private buildShowMessages() {
         this.showMessages = [];
         for (const message of this.dataMessages) {
             const me = {

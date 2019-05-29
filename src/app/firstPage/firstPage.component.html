@@ -1,22 +1,24 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-    <div class="container">
-        <a class="navbar-brand">Messages:</a>
-        <ul class="nav navbar-nav" routerLinkActive="active">
-            <div *ngFor="let showMessage of showMessages">
-                <li class="nav-item"><a class="nav-link" routerLink=""
-                        (click)='showDetails(showMessage.id)'>{{ showMessage.title  }}</a></li>
-            </div>
-        </ul>
-    </div>
-</nav>
-
 <div>
-    <input class="col col-6" [formControl]="controlInput" (keyup)="onChangeValue()" />
-    <select class="col col-6" [formControl]="controlSelect" (change)="onChangeValue()">
+    <h3 class="left col col-2">Messages:</h3>
+    <div *ngIf="showMessages.length===0" class="left col col-2">
+        No messages yet
+    </div>
+    <h3></h3>
+    <div *ngFor="let showMessage of showMessages">
+        <li class="col col-8"><a class=".button-link" routerLink=""
+                (click)='showDetails(showMessage.id)'>{{ showMessage.title  }}</a></li>
+    </div>
+    <h3></h3>
+</div>
+
+<h3>
+    <input class="form-control col col-4" [formControl]="controlInput" label="momchil " (keyup)="onChangeValue()">
+
+    <select class="form-control col col-1" [formControl]="controlSelect" (change)="onChangeValue()">
         <option *ngFor="let option of label.options" [value]="option.key"> {{ option.value  }} </option>
     </select>
-</div>
+</h3>
 <div>
-    <input class="favorite styled" type="button" value="'Add message'" [formControl]="controlButton"
+    <input class="btn btn-primary" type="button" value="'Add message'" [formControl]="controlButton"
         (click)='addDataMessage($event)'>
 </div>

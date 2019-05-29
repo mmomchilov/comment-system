@@ -19,8 +19,8 @@ export class SecondPageComponent {
 
     deleteMessage() {
         const activeModal = this.modalService.open(ConfirmCancelModal, { size: 'lg', backdrop: 'static', windowClass: 'center-modal' });
-        activeModal.componentInstance.confirmText = 'delete?';
-        activeModal.componentInstance.confirmTitle = 'delete?';
+        activeModal.componentInstance.confirmText = 'Do You really want to delete this message?';
+        activeModal.componentInstance.confirmTitle = 'Delete dialog';
         activeModal.componentInstance.modalHeader = true;
         activeModal.componentInstance.buttonTitles = { confirm: 'Delete', close: 'Cancel' };
         activeModal.componentInstance.sourceComponent = this;

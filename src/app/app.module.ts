@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstPageComponent } from './firstPage/firstPage.component';
@@ -30,9 +29,9 @@ const appRoutes: Routes = [
     FirstPageComponent,
     AppComponent
   ],
-  imports: [  RouterModule.forRoot(
-    appRoutes,
-    { enableTracing: true } // <-- debugging purposes only
+  imports: [RouterModule.forRoot(
+    appRoutes
+    //  ,{ enableTracing: true } // <-- debugging purposes only
   ),
     CommonModule,
     BrowserModule,
@@ -44,7 +43,7 @@ const appRoutes: Routes = [
   entryComponents: [
     ConfirmCancelModal
   ],
-  providers: [],
+  providers: [CommonModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

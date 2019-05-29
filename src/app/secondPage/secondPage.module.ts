@@ -10,5 +10,5 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     providers: []
 })
 
-export class AgreementAppendiceModule {
+export class SecondPageModule {
 }
