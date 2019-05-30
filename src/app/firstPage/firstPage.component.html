@@ -1,7 +1,7 @@
 <div>
-    <h3 class="left col col-2">Messages:</h3>
+    <h3 class="left col col-2">Comments:</h3>
     <div *ngIf="showMessages.length===0" class="left col col-2">
-        No messages yet
+        No comments yet
     </div>
     <h3></h3>
     <div *ngFor="let showMessage of showMessages">
@@ -10,15 +10,19 @@
     </div>
     <h3></h3>
 </div>
+<div class="left col ">
 
-<h3>
-    <input class="form-control col col-4" [formControl]="controlInput" label="momchil " (keyup)="onChangeValue()">
+    <div class="form-group">
+        <label for="coment">Comment</label>
+        <input class="form-control col-3" [formControl]="controlInput" id="coment" placeholder="Put comment here"
+            (keyup)="onChangeValue()">
 
-    <select class="form-control col col-1" [formControl]="controlSelect" (change)="onChangeValue()">
-        <option *ngFor="let option of label.options" [value]="option.key"> {{ option.value  }} </option>
-    </select>
-</h3>
-<div>
+        <label for="comentType">Comment type</label>
+        <select class="form-control col-1" [formControl]="controlSelect" id="comentType" (change)="onChangeValue()">
+            <option *ngFor="let option of label.options" [value]="option.key"> {{ option.value  }} </option>
+        </select>
+    </div>
+
     <input class="btn btn-primary" type="button" value="'Add message'" [formControl]="controlButton"
         (click)='addDataMessage($event)'>
 </div>
