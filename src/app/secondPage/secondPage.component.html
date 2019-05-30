@@ -1,6 +1,11 @@
+
 <h3 class="left col col-2">Message:</h3>
-<div class="red col col-8"> {{ message  }} </div>
+<input class="form-control  col-8" [formControl]="controlComment" >  
+
+
 <h3></h3>
-<div>
+<div class="form-group">
         <input class="btn btn-primary col-2" type="button" value="Delete" (click)='deleteMessage()'>
+        <input class="btn btn-primary col-2" type="button" value="Update" (click)='updateMessage()'>
+        <input class="btn btn-primary col-2" type="button" value="Back" (click)='goBack()'>
 </div>

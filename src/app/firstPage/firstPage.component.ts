@@ -17,9 +17,9 @@ export class FirstPageComponent implements OnInit {
     controlSelect: FormControl;
     controlButton: FormControl;
     constructor(private router: Router, private commentService: CommentService, ) {
-        this.controlInput = new FormControl({ value: '' });
+        this.controlInput = new FormControl({ value: '', disabled: false });
         this.controlInput.reset();
-        this.controlSelect = new FormControl({ value: undefined });
+        this.controlSelect = new FormControl({ value: undefined, disabled: false });
         this.controlButton = new FormControl({ value: 'Add Message', disabled: true });
     }
 
