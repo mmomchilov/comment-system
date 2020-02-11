@@ -1,11 +1,10 @@
 
-<h3 class="left col col-2">Message:</h3>
+<h3 class="left col col-5">Message. You can update here:</h3>
 <input class="form-control  col-8" [formControl]="controlComment" >  
-
 
 <h3></h3>
 <div class="form-group">
         <input class="btn btn-primary col-2" type="button" value="Delete" (click)='deleteMessage()'>
-        <input class="btn btn-primary col-2" type="button" value="Update" (click)='updateMessage()'>
+        <input class="btn btn-primary col-2" type="button" value="SAVE and BACK" (click)='updateMessage()'>
         <input class="btn btn-primary col-2" type="button" value="Back" (click)='goBack()'>
 </div>
