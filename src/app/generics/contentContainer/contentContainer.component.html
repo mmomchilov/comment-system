@@ -1,0 +1,74 @@
+<tabset *ngIf="tabs; else content"
+        justified="true"
+        [type]="tabs ? 'tabs' : 'pills'"
+        class="tabs inner-tabs">
+  <tab *ngFor="let tab of tabs"
+       [heading]="tab.label "
+       [active]="tab.filterName==selectedFilter ? true:false"
+       [id]="tab.field"
+       (selectTab)="selectFilter(tab.filterName)"></tab>
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</tabset>
+
+<ng-template #content>
+  <div *ngFor="let rowLst of contentList"
+       class="row">
+    <div *ngFor="let content of rowLst"
+         [ngClass]="['centerList', getStyling(),
+         content.columnSize && isVisible(content) ? 'col-' + content.columnSize :'' ]">
+      <div [ngSwitch]="getComponent(content.type)">
+        <gen-simple-input *ngSwitchCase="'simpleInputs'"
+                          [ngClass]="['col-' + columnSize]"
+                          [hidden]="!isVisible(content)"
+                          [parentId]="parentId"
+                          [displayMode]="displayMode"
+                          [database]="database"
+                          [collectionId]="collectionId"
+                          [collection]="collection"
+                          [originalCollection]="originalCollection"
+                          [config]="content"
+                          [formGroup]="formGroup"
+                          [updates]="communicationService"
+                          (onShowDetails)="showDetails($event)"
+                          (valueChanged)="emitContentEvent($event)">
+        </gen-simple-input>
+
+        <div *ngSwitchCase="'table'"
+             [hidden]="!isVisible(content)">
+         <!-- <add-remove-table [database]="database"
+                            [collectionId]="collectionId"
+                            [cardsList]="content.cardsList"
+                            [items]="content.tableItems"
+                            [displayMode]="displayMode"
+                            [confirmDelete]="content.confirmDelete"></add-remove-table> -->
+        </div>
+
+        <div *ngSwitchCase="'editableTable'"
+             [hidden]="!isVisible(content)"
+             class="editableTable">
+          <h4 *ngIf="getTableSettings(content).tableTitle">{{getTableSettings(content).tableTitle}}</h4>
+         <!-- <gen-view-table [database]="database"
+                          [collectionId]="collectionId"
+                          [keyWord]=content.keyword
+                          [data]="content.tableItems"
+                          [displayMode]="displayMode"
+                          [limitPerPage]="10"
+                          [settings]="getTableSettings(content)"
+                          (editConfirm)="onSaveConfirm($event, content)"
+                          (createConfirm)="onCreateConfirm($event, content)"
+                          (deleteConfirm)="onDeleteConfirm($event, content)"
+                          (customAction)="onCustomAction($event, content)"
+                          (userRowClick)="showDetail($event, content)">
+          </gen-view-table> -->
+        </div>
+<!-- 
+        <div *ngSwitchCase="'echart1'"
+             [hidden]="!isVisible(content)">
+          <ba-echart-free
+                          [baEChartFreeConfiguration]="content.options">
+          </ba-echart-free>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</ng-template>

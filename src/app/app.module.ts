@@ -13,6 +13,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { SimpleInputComponent } from './generics/simpleInput';
 import { JsonPath } from './generics/genericServices/jsonpath/jsonPath.service';
 // import { SubHeader } from './generics/subHeader/subHeader.component';
+import { TreeExplorerComponent } from './generics/tree/treeExplorer';
+import { TreeNodeComponent } from './generics/tree/treeNode';
+import { ContentContainerComponent } from './generics/contentContainer';
+import { PanelViewComponent } from './generics/panelView';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
 
 const appRoutes: Routes = [
   { path: 'firstPage', component: FirstPageComponent },
@@ -27,7 +33,11 @@ const appRoutes: Routes = [
 ];
 @NgModule({
   declarations: [
-   // SubHeader,
+    // SubHeader,
+    PanelViewComponent,
+    ContentContainerComponent,
+    TreeNodeComponent,
+    TreeExplorerComponent,
     ConfirmCancelModal,
     SecondPageComponent,
     FirstPageComponent,
@@ -35,6 +45,8 @@ const appRoutes: Routes = [
     SimpleInputComponent
   ],
   imports: [
+    TabsModule,
+    TabsModule.forRoot(),
 
     RouterModule.forRoot(
       appRoutes

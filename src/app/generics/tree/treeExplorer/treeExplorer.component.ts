@@ -42,7 +42,8 @@ export class TreeExplorerComponent implements OnInit {
     if (uniqueCode) {
       resultNode = this.findNodeByCode(this.nodes, uniqueCode);
     } else {
-      const pathLst: string[] = this.nodeToDisplay.pathLst;
+     // const pathLst: string[] = this.nodeToDisplay.pathLst; just test!!!!!!!
+      const pathLst: string[] = [];
       if (pathLst.length > 0) {
         let nodeToDisplay = this.nodes.find(el => el.code === pathLst[0]);
         let subNodes;

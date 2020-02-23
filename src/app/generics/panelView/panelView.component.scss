@@ -1,0 +1,45 @@
+.left-frame {
+  border: 1px dashed lightblue;
+  overflow: scroll;
+  padding-top: 0.5em;
+  padding-right: 0;
+  min-height: 200px;
+  width: 95%;
+  height: 100%;
+}
+
+.right-frame {
+  overflow: scroll;
+  overflow-y: hidden;
+}
+
+.full-height {
+  height: 100%;
+  min-height: 200px;
+  background-color: gainsboro;
+  width: 15px;
+  display: table;
+  text-align: center;
+}
+
+.custom {
+  display: flex;
+  flex-direction: row;
+}
+
+.customClosed {
+  display: flex;
+  flex-direction: row;
+  width: 15px;
+}
+
+.customClosed {
+  display: flex;
+  flex-direction: row;
+  width: 15px;
+}
+
+.fa-vc {
+  display: table-cell;
+  vertical-align: middle;
+}

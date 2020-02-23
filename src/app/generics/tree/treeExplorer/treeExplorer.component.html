@@ -2,7 +2,7 @@
   <div left>
     <div *ngIf="enableAddingNewRoot()"
          class="btn btn-outline-success"
-         (click)="addNewNode()">{{display.addNewNode.title | translate}}
+         (click)="addNewNode()">{{display.addNewNode.title}}
     </div>
     <tree-node [displayMode]="display.displayMode"
                [treeManager]="treeManager"

@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { CommentService } from './../commentServices/commentService/comment.service';
+import { CardContentConfiguration } from '../generics/configurationClasses/cardContentConfiguration';
 
 @Component({
     selector: 'app-page-first',
@@ -16,7 +17,10 @@ export class FirstPageComponent implements OnInit {
     controlInput: FormControl;
     controlSelect: FormControl;
     controlButton: FormControl;
-    constructor(private router: Router, private commentService: CommentService, ) {
+
+    content: CardContentConfiguration = { type: 'tree' };
+
+    constructor(private router: Router, private commentService: CommentService) {
         this.controlInput = new FormControl({ value: '', disabled: false });
         this.controlInput.reset();
         this.controlSelect = new FormControl({ value: undefined, disabled: false });
