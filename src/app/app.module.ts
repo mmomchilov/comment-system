@@ -10,6 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { SimpleInputComponent } from './generics/simpleInput';
+import { JsonPath } from './generics/genericServices/jsonpath/jsonPath.service';
+// import { SubHeader } from './generics/subHeader/subHeader.component';
 
 const appRoutes: Routes = [
   { path: 'firstPage', component: FirstPageComponent },
@@ -24,15 +27,19 @@ const appRoutes: Routes = [
 ];
 @NgModule({
   declarations: [
+   // SubHeader,
     ConfirmCancelModal,
     SecondPageComponent,
     FirstPageComponent,
-    AppComponent
+    AppComponent,
+    SimpleInputComponent
   ],
-  imports: [RouterModule.forRoot(
-    appRoutes
-    //  ,{ enableTracing: true } // <-- debugging purposes only
-  ),
+  imports: [
+
+    RouterModule.forRoot(
+      appRoutes
+      //  ,{ enableTracing: true } // <-- debugging purposes only
+    ),
     CommonModule,
     BrowserModule,
     AppRoutingModule,
@@ -43,7 +50,7 @@ const appRoutes: Routes = [
   entryComponents: [
     ConfirmCancelModal
   ],
-  providers: [CommonModule],
+  providers: [CommonModule, JsonPath],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
