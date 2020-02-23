@@ -1,0 +1,41 @@
+<ul *ngFor="let child of children"
+    class="tree-node"
+    pDraggable="dd"
+    (onDragEnd)="onDragEnd($event,child)"
+    (onDragStart)="onDragStart($event,child)">
+    <li>
+        <i *ngIf="hasChevronDown(child)"
+           [ngClass]="'fa fa-chevron-down pull-left'"
+           (click)="toggle(child)"></i>
+        <i *ngIf="hasChevronRight(child)"
+           [ngClass]="'fa fa-chevron-right align-with-chevron-down pull-left'"
+           (click)="toggle(child)"></i>
+        <div *ngIf="empty(child)"
+             class="pull-left"
+             [ngClass]="hasNodeRightOffset()?'empty-big':'empty-small'"></div>
+
+        <div class="node">
+            <span [ngClass]="getNodeClass(child)"
+                  [ngStyle]="getCustomCSS(child)"
+                  pDroppable="dd"
+                  (onDrop)="onDrop($event,child)"
+                  (click)="selectNode(child)">
+                {{getNodeDisplay(child)}}</span>
+            <div *ngIf="addIsAllowed()"
+                 class="fa fa-plus pull-left"
+                 (click)="handleAction('add', child, $event)"></div>
+            <div *ngIf="deleteIsAllowed()"
+                 class="fa fa-trash"
+                 (click)="handleAction('delete', child, $event)"></div>
+        </div>
+        <div *ngIf="child.expanded">
+            <tree-node [displayMode]="displayMode"
+                       [treeManager]="treeManager"
+                       [allowAddSubnodes]="allowAddSubnodes"
+                       [delete]="delete"
+                       [hasChildNodes]="hasChildNodes"
+                       [customCSS]="customCSS"
+                       [children]="child.subNodes"></tree-node>
+        </div>
+    </li>
+</ul>

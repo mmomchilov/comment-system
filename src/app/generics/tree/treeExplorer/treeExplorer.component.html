@@ -1,0 +1,42 @@
+<gen-panel-view>
+  <div left>
+    <div *ngIf="enableAddingNewRoot()"
+         class="btn btn-outline-success"
+         (click)="addNewNode()">{{display.addNewNode.title | translate}}
+    </div>
+    <tree-node [displayMode]="display.displayMode"
+               [treeManager]="treeManager"
+               [allowAddSubnodes]="add.allowAddSubnodes"
+               [delete]="delete"
+               [hasChildNodes]="hasChildNodes"
+               [customCSS]="customCSS"
+               [children]="nodes"
+               (selectedNode)="handleSelectedNode($event)">
+    </tree-node>
+  </div>
+  <div right>
+    <div *ngIf="treeManager.nodeToDisplay">
+      <gen-content-container [displayMode]="display.displayMode"
+                             [config]="{list:display.config.content.fields, tabs:display.config.content.tabs, selectedTab: display.config.content.selectedTab}"
+                             [cards]="[]"
+                             [collection]="treeManager.nodeToDisplay"
+                             [database]="display.database"
+                             [collectionId]="display.collectionId"
+                             [originalCollection]="treeManager.nodeToDisplay"
+                             [styling]="'form-group'"
+                             (contentEvent)="update($event)">
+      </gen-content-container>
+      <!-- <gen-simple-inputs [ngClass]="['col-' + 12]"
+                         [displayMode]="display.displayMode"
+                         [cards]="[]"
+                         [database]="display.database"
+                         [collectionId]="display.collectionId"
+                         [collection]="treeManager.nodeToDisplay"
+                         [originalCollection]="treeManager.nodeToDisplay"
+                         [content]="display.config.content"
+                         [columnSize]="display.config.columnSize"
+                         [minContentHeight]="display.config.minContentHeight ? display.minContentHeight : null">
+      </gen-simple-inputs> -->
+    </div>
+  </div>
+</gen-panel-view>

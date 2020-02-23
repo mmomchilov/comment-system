@@ -1,0 +1,18 @@
+.btn {
+        display: block;
+        text-align: center;
+        color: red;
+        font-size: 16px;
+        border: 1px dashed #f40404;
+        margin-bottom: 5px;
+
+        &:hover {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            background-color: rgba(64, 159, 255, 0.2);
+        }
+}
+
+:host::ng-deep .left-frame>div>tree-node>ul {
+    padding-left: 0px !important;
+}

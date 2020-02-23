@@ -1,0 +1,63 @@
+@mixin big-left-space() {
+    min-width: 23px;
+    min-height: 1px;
+}
+
+ul {
+    padding-inline-start: 20px;
+
+    li {
+        list-style-type: none;
+        padding: 2px;
+
+        i {
+            margin-left: 5px;
+
+            &.align-with-chevron-down {
+                margin-right: 8px;
+            }
+        }
+
+        ul {
+            .empty-small {
+                @include big-left-space();
+            }
+        }
+    }
+}
+
+.empty-small {
+    min-width: 5px;
+    min-height: 1px;
+}
+
+.empty-big {
+    @include big-left-space();
+}
+
+.fa-plus {
+    color: green;
+}
+
+.fa-trash {
+    color: red;
+}
+
+.fa-plus,
+.fa-trash {
+    padding-left: 10px;
+    visibility: hidden;
+}
+
+.node:hover .fa-plus {
+    visibility: visible;
+}
+
+.node:hover .fa-trash {
+    visibility: visible;
+}
+
+.selected {
+    color: dodgerblue;
+    font-weight: 500;
+}

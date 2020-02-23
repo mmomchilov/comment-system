@@ -1,0 +1,106 @@
+<!--  <label *ngIf="config.hideLabel!==true"
+       [hidden]="!isVisible(config) || config.type=='label'"
+       class="control-label"
+       for="{{config.field}}"
+       [ngClass]="[(config.validators && config.validators.isRequired && !isViewMode())? 'required' : '',
+                config.isNotVisible ? 'notVisible' :'',
+                'control-label']">
+  {{config.label}}
+</label>
+
+<div [ngSwitch]="config.type">
+
+  <div *ngSwitchCase="'label'"
+       class="description"
+       [ngStyle]="getCustomCSS(config)"
+       [hidden]="!isVisible(config)">
+    <span>
+      {{config.label}}
+    </span>
+  </div>
+
+  <div *ngSwitchCase="'input'"
+       [hidden]="!isVisible(config)">
+    <input class="form-control"
+           name="{{config.field}}"
+           id="{{parentId+config.field}}"
+           [formControl]="formGroup.controls[config.field]"
+           (focus)="focus(config, $event)"
+           (focusout)="focusOut(config, $event)"
+           (keyup)="onChangeValue(config, $event)" />
+    <span [hidden]="!formErrors[config.field]">
+      <label>{{formErrors[config.field]}}</label>
+    </span>
+  </div>
+
+  <div *ngSwitchCase="'select'"
+       [hidden]="!isVisible(config)">
+    <select class="form-control"
+            name="{{config.field}}"
+            id="{{parentId+config.field}}"
+            [formControl]="formGroup.controls[config.field]"
+            (change)="onChangeValue(config, $event)">
+      <option *ngFor="let option of config.optionLst"
+              [value]="option.code"> {{ option.display }} </option>
+    </select>
+    <div *ngIf="config.loading"
+         class="spinner-overlay">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'date'">
+    <input *ngIf="isViewMode()"
+           class="form-control"
+           name="{{config.field}}"
+           id="{{parentId+config.field}}"
+           [hidden]="!isVisible(config)"
+           [formControl]="formGroup.controls[config.field]" />
+ <!--   <my-date-picker *ngIf="!isViewMode()"
+                    [hidden]="!isVisible(config)"
+                    [locale]="locale"
+                    [formControl]="formGroup.controls[config.field]"
+                    [options]="{dateFormat: 'dd/mm/yyyy'}"
+                    class="form-control date-picker"
+                    (dateChanged)="onDateChanged($event, config)"></my-date-picker>
+                  
+                  ADD LATER!!!!!
+                  -->
+  <!--   <span [hidden]="!formErrors[config.field]">
+      <label>{{formErrors[config.field]}}</label>
+    </span>
+  </div>
+
+  <div *ngSwitchCase="'checkbox'"
+       [hidden]="!isVisible(config)"
+       class="row">
+    <div *ngFor="let option of config.optionLst"
+         [ngClass]="'col-' + config.splitSize">
+      <label class="checkbox-inline custom-checkbox nowrap">
+        <input type="checkbox"
+               name="{{config.field}}"
+               id="{{parentId+config.field}}"
+               value="{{option.code}}"
+               [checked]="isChecked(config, option.code)"
+               [formControl]="formGroup.controls[config.field]"
+               (change)="onChangeValue(config, $event)" />
+        <span>{{option.display }}</span>
+      </label>
+    </div>
+  </div>
+
+  <button *ngSwitchCase="'user'"
+          [hidden]="!isVisible(config)"
+          type="button"
+          class="btn fa-user-plus fa px-2 pull-right top-button"
+          id="{{parentId+'user'}}"
+          [tooltip]="config.title"></button>
+
+  <div *ngSwitchCase="'reloadButton'"
+       [hidden]="!isVisible(config)"
+       [ngClass]="(displayMode !== 'c' && displayMode !== 'u' )? 'notVisible' :''"
+       (click)="reloadCache()">
+    <button type="button"
+            id="{{parentId+'reloadButton'}}"
+            class="btn fa fa-refresh px-2 pull-right top-button"
+            title="{{config.title}}"></button> -->

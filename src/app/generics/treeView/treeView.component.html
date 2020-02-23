@@ -1,0 +1,36 @@
+<ul *ngFor="let child of children"
+    class="tree-node"
+    pDraggable="dd"
+    (onDragEnd)="onDragEnd($event,child)"
+    (onDragStart)="onDragStart($event,child)">
+        <li>
+                <i *ngIf="hasChevronDown(child)"
+                   [ngClass]="'fa fa-minus-square pull-left'"
+                   (click)="toggle(child)"></i>
+                <i *ngIf="hasChevronRight(child)"
+                   [ngClass]="'fa fa-plus-square pull-left'"
+                   (click)="toggle(child)"></i>
+                <form pDroppable="dd"
+                      (onDrop)="onDrop($event,child)">
+                        <gen-card-detail [ngClass]="['col-' + child.config.columnSize]"
+                                         [displayMode]="displayMode"
+                                         [cards]="[]"
+                                         [database]="child.database"
+                                         [collectionId]="child.collectionId"
+                                         [collection]="child.collection"
+                                         [originalCollection]="child.collection"
+                                         [title]="child.text"
+                                         [actions]="child.config.actions"
+                                         [isOpenedHeader]="child.config.isOpenedHeader"
+                                         [content]="child.config.content"
+                                         [columnSize]="child.config.columnSize"
+                                         [minContentHeight]="child.config.minContentHeight ? child.config.minContentHeight : null"
+                                         (onAction)="handleAction($event, child)"
+                                         (onShowDetails)="showDetails($event)">
+                        </gen-card-detail>
+                </form>
+                <div *ngIf="child.expanded">
+                        <tree-view [children]="child.subNodes"></tree-view>
+                </div>
+        </li>
+</ul>
