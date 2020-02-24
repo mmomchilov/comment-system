@@ -32,7 +32,11 @@
 <gen-simple-input                           >
 </gen-simple-input>
 
- <gen-tree-explorer [nodes]=[]
-                             [nodeToDisplay]="'content.tree.nodeToDisplay'"
-                             [display]="true"
-                             ></gen-tree-explorer>
+<gen-tree-explorer [nodes]="content.tree.nodes"
+[add]="content.tree.add"
+[delete]="content.tree.delete"
+[hasChildNodes]="content.tree.hasChildNodes"
+[nodeToDisplay]="content.tree.nodeToDisplay"
+[customCSS]="content.tree.customCSS"
+[display]="content.tree.display"
+(selectedNode)=handleSelectedNode($event)></gen-tree-explorer>
